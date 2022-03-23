@@ -106,12 +106,18 @@ function Car(model, milesPerGallon) {
 }
 
 Car.prototype.fill = function (gallons) {
-  return this.tank += gallons;
+  this.tank += gallons;
 }
 
-// const prius = new Car('Prius', 50);
-// prius.fill(10)
-// console.log(prius) 
+Car.prototype.drive = function (distance){
+  this.odometer += distance;
+  this.tank -= distance/this.milesPerGallon;
+}
+
+const prius = new Car('Prius', 50);
+prius.fill(10)
+prius.drive(200)
+console.log(prius) 
 
 /*
   TASK 3
@@ -130,8 +136,8 @@ Baby.prototype.play = function () {
   return (`Playing with ${this.favoriteToy}`)
 }
 
-const baby1 = new Baby('Isaac', 6, 'trains');
-baby1.play();
+// const baby1 = new Baby('Isaac', 6, 'trains');
+// baby1.play();
 
  
 /* 

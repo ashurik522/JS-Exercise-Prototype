@@ -109,7 +109,9 @@ Car.prototype.fill = function (gallons) {
   return this.tank += gallons;
 }
 
-
+// const prius = new Car('Prius', 50);
+// prius.fill(10)
+// console.log(prius) 
 
 /*
   TASK 3
@@ -118,18 +120,27 @@ Car.prototype.fill = function (gallons) {
     - Besides the methods on Person.prototype, babies also have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age)
+ this.favoriteToy = favoriteToy;
+}
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function () {
+  return (`Playing with ${this.favoriteToy}`)
 }
 
+const baby1 = new Baby('Isaac', 6, 'trains');
+baby1.play();
 
+ 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. this in  global scope is the console object
+  2. Implicit binding = this is the object before a . when you call on it
+  3. New binding = can bind object together with constructor functions
+  4. Explicit binding = we can explicitly define this using .call
 */
 
 
